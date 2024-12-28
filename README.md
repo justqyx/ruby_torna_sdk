@@ -10,7 +10,7 @@ Install the gem and add to the application's Gemfile by executing:
 
 ## Usage
 
-    $ bundle exec rails torna:print_and_upload
+    $ TORNADO_URL=http://localhost:7700/api TORNADO_ACCESS_TOKEN=xxx bundle exec rails torna:print_and_upload
 
 ## Development
 
