@@ -18,3 +18,13 @@
 ### Feat
 
 - torna api
+
+## 0.1.2 (2024-12-29)
+
+### Feat
+
+- torna api
+
+### Fix
+
+- **gemspec**: remove Appraisals corectlly
