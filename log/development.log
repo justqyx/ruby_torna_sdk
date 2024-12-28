@@ -1,1 +1,0 @@
-DEPRECATION WARNING: `to_time` will always preserve the receiver timezone rather than system local time in Rails 8.1. To opt in to the new behavior, set `config.active_support.to_time_preserves_timezone = :zone`. (called from setup at /Users/yuanxin/code/ruby_torna_sdk/test/tasks/test_torna_task.rb:12)
