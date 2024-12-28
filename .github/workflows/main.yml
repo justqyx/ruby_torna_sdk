@@ -1,0 +1,39 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby: 
+          - '2.6'
+          - '2.7'
+          - '3.0'
+          - '3.1'
+          - '3.2'
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install
+    - name: Run the default task
+      run: bundle exec rake test
+      env:
+        TORNADO_URL: http://localhost:7700/api
+        TORNADO_ACCESS_TOKEN: anystring
