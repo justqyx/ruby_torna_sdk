@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
     end
   end
   spec.files.reject! { |f| f.match(%r{^gemfiles/}) }
-  spec.files.reject! { |f| f == "appraisal" }
+  spec.files.reject! { |f| f == "Appraisals" }
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
