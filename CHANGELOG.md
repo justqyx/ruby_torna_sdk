@@ -39,3 +39,15 @@
 
 - **log**: remove unnecessary logs
 - **gemspec**: remove Appraisals corectlly
+
+## 0.1.4 (2024-12-29)
+
+### Feat
+
+- torna api
+
+### Fix
+
+- **railtie**: load torna.rake exactly
+- **log**: remove unnecessary logs
+- **gemspec**: remove Appraisals corectlly
