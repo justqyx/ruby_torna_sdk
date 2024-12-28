@@ -5,7 +5,7 @@ require "rails"
 module TornaSdk
   class Railtie < ::Rails::Railtie
     rake_tasks do
-      load "lib/tasks/torna.rake"
+      Dir[File.join(File.dirname(__FILE__), '../tasks/*.rake')].each { |f| load f }
     end
   end
 end
