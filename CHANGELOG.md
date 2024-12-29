@@ -51,3 +51,16 @@
 - **railtie**: load torna.rake exactly
 - **log**: remove unnecessary logs
 - **gemspec**: remove Appraisals corectlly
+
+## 0.1.5 (2024-12-29)
+
+### Feat
+
+- torna api
+
+### Fix
+
+- **torna.rake**: should depends_on :environment
+- **railtie**: load torna.rake exactly
+- **log**: remove unnecessary logs
+- **gemspec**: remove Appraisals corectlly
