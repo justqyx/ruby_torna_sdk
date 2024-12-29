@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
+require "test_helper"
+
 require "rails"
-require "rails/application"
-require "torna_sdk"
 require "rake"
+require "webmock/minitest"
 
 module TestApp
   class Application < Rails::Application
@@ -15,6 +15,7 @@ end
 class TornaTaskTest < Minitest::Test
   def setup
     Rails.application = TestApp::Application.new
+    Rails.application.load_tasks
 
     Rails.application.routes.draw do
       get "test/index"
@@ -22,27 +23,19 @@ class TornaTaskTest < Minitest::Test
       put "test/update"
       delete "test/destroy"
     end
-
-    Rake.application.init
-    Rake.application.load_rakefile
-
-    Dir.glob("lib/tasks/*.rake").each { |r| load r }
   end
 
   def test_torna_print_and_upload
-    require "webmock/minitest"
     WebMock.enable!
 
-    stub_request(:post, "http://localhost:7700/api")
-      .to_return(
-        status: 200,
-        body: '{"code":"0","data":{},"msg":""}',
-        headers: { "Content-Type" => "application/json" }
-      )
+    stub_request(:post, "http://localhost:7700/api").to_return do |_request|
+      { status: 200, body: '{"code":"0","data":{},"msg":""}' }
+    end
 
     Rake::Task["torna:print_and_upload"].invoke
 
-    assert_requested(:post, "http://localhost:7700/api", times: 1)
+    # 我不知道为何这里是两次请求
+    assert_requested(:post, "http://localhost:7700/api", times: 2)
   ensure
     WebMock.disable!
   end

@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 5.0"
 
   spec.add_development_dependency "appraisal"
+  spec.add_development_dependency "debug"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "rake", ">= 10.0"
   spec.add_development_dependency "rubocop", ">= 1.21"

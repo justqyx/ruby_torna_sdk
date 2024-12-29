@@ -2,21 +2,11 @@
 
 namespace :torna do
   desc "Print all routes and upload to tornado"
-  task :print_and_upload do
-    torna_apis = routes_to_torna_apis
-
-    torna_apis.each do |api|
-      puts "#{api["httpMethod"]} #{api["url"]}"
-    end
-
-    upload_routes(torna_apis)
-  end
-
-  def routes_to_torna_apis
+  task print_and_upload: :environment do
     Rails.application.reload_routes!
     routes = Rails.application.routes.routes
 
-    routes.map do |route|
+    torna_apis = routes.map do |route|
       # {
       #    "name": "获取商品信息",
       #    "description": "获取商品信息",
@@ -183,9 +173,7 @@ namespace :torna do
         "pathParams" => route.path.required_names.map { |name| { "name" => name, "type" => "string" } }
       }
     end
-  end
 
-  def upload_routes(torna_apis)
     require "net/http"
     require "uri"
     require "json"

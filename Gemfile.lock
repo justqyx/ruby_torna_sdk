@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    torna_sdk (0.1.0)
+    torna_sdk (0.1.4)
       rails (>= 5.0)
 
 GEM
@@ -96,6 +96,9 @@ GEM
       rexml
     crass (1.0.6)
     date (3.4.1)
+    debug (1.10.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     drb (2.2.1)
     erubi (1.13.1)
     globalid (1.2.1)
@@ -245,6 +248,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
+  debug
   minitest
   rake (>= 10.0)
   rubocop (>= 1.21)
